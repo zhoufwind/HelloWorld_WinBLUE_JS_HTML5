@@ -28,5 +28,11 @@
         // args.setPromise().
     };
 
+    function buttonClickHandler(eventInfo) {
+        var userName = document.getElementById("nameInput").value;
+        var greetingString = "Hello, " + userName + "!";
+        document.getElementById("greetingOutput").innerText = greetingString;
+    }
+
     app.start();
 })();
