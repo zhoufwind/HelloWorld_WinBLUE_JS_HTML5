@@ -15,11 +15,24 @@
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.
             }
-            args.setPromise(WinJS.UI.processAll());
 
-            // Retrieve the button and register our event handler.
-            var helloButton = document.getElementById("helloButton");
-            helloButton.addEventListener("click", buttonClickHandler, false);
+            // Step 8: Register an event handler for a Windows Library for JavaScript control
+            args.setPromise(WinJS.UI.processAll().then(function completed() {
+                // Retrieve the div that hosts the Rating control.
+                var ratingControlDiv = document.getElementById("ratingControlDiv");
+
+                // Retrieve the actual Rating control.
+                var ratingControl = ratingControlDiv.winControl;
+
+                // Register the event handler.
+                ratingControl.addEventListener("change", ratingChanged, false);
+
+                // Step 5: Register the event handler when the app launches
+                // Retrieve the button and register our event handler.
+                var helloButton = document.getElementById("helloButton");
+                helloButton.addEventListener("click", buttonClickHandler, false);
+            }));
+
         }
     };
 
@@ -32,10 +45,16 @@
         // args.setPromise().
     };
 
+    // Step 4: Create an event handler
     function buttonClickHandler(eventInfo) {
         var userName = document.getElementById("nameInput").value;
         var greetingString = "Hello, " + userName + "!";
         document.getElementById("greetingOutput").innerText = greetingString;
+    }
+
+    function ratingChanged(eventInfo) {
+        var ratingOutput = document.getElementById("ratingOutput");
+        ratingOutput.innerText = eventInfo.detail.tentativeRating;
     }
 
     app.start();

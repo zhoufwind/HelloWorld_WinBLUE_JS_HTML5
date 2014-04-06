@@ -5,6 +5,7 @@
     <title>HelloWorld_WinBLUE_JS_HTML5</title>
 
     <!-- WinJS references -->
+    <!--Step 6: Style the start page-->
     <link href="//Microsoft.WinJS.2.0/css/ui-light.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
@@ -14,6 +15,7 @@
     <script src="/js/default.js"></script>
 </head>
 <body>
+    <!--Step 3: Modify the start page-->
     <h1 class="headerClass">Hello, world!</h1>
     <div class="mainContent">
         <p>What's your name?</p>
@@ -21,8 +23,14 @@
         <button id="helloButton">Say "Hello"</button>
         <div id="greetingOutput"></div>
 
-        <!--Add a Windows Library for JavaScript control-->
+        <!--Step 7: Add a Windows Library for JavaScript control-->
         <div id="toggleSwitchControlDiv" data-win-control="WinJS.UI.ToggleSwitch"></div>
+
+        <label for="ratingControlDiv">
+            Rate this greeting:
+        </label>
+        <div id="ratingControlDiv" data-win-control="WinJS.UI.Rating"></div>
+        <div id="ratingOutput"></div>
     </div>
 </body>
 </html>
