@@ -16,6 +16,10 @@
                 // Restore application state here.
             }
             args.setPromise(WinJS.UI.processAll());
+
+            // Retrieve the button and register our event handler.
+            var helloButton = document.getElementById("helloButton");
+            helloButton.addEventListener("click", buttonClickHandler, false);
         }
     };
 
