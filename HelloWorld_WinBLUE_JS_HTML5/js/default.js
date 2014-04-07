@@ -31,6 +31,11 @@
                 // Retrieve the button and register our event handler.
                 var helloButton = document.getElementById("helloButton");
                 helloButton.addEventListener("click", buttonClickHandler, false);
+
+                // Retrieve the input element and register our event handler.
+                var nameInput = document.getElementById("nameInput");
+                nameInput.addEventListener("change", nameInputChanged);
+
             }));
 
         }
@@ -52,9 +57,24 @@
         document.getElementById("greetingOutput").innerText = greetingString;
     }
 
+    // To save app data
+    function nameInputChanged(eventInfo) {
+        var nameInput = eventInfo.srcElement;
+
+        // Store the user's name for multiple sessions.
+        var appData = Windows.Storage.ApplicationData.current;
+        var roamingSettings = appData.roamingSettings;
+        roamingSettings.values["userName"] = nameInput.value;
+    }
+
     function ratingChanged(eventInfo) {
         var ratingOutput = document.getElementById("ratingOutput");
         ratingOutput.innerText = eventInfo.detail.tentativeRating;
+
+        // Store the rating for multiple sessions.
+        var appData = Windows.Storage.ApplicationData.current;
+        var roamingSettings = appData.roamingSettings;
+        roamingSettings.values["greetingRating"] = eventInfo.detail.tentativeRating;
     }
 
     app.start();
